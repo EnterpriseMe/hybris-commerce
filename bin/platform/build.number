@@ -1,0 +1,7 @@
+#Ant properties
+#Fri Jul 07 15:20:50 CEST 2017
+builddate=20170707 1513
+releasedate=20170707 1513
+vendor=hybris
+version=6.2.0.10
+version.api=6.2.0

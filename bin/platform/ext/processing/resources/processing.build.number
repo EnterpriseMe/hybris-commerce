@@ -1,0 +1,9 @@
+#Ant properties
+#Fri Jul 07 15:19:55 CEST 2017
+builddate=20170707 1513
+description=processing
+name=processing
+releasedate=20160923 1341
+vendor=hybris
+version=6.2.0.10
+version.api=6.2.0

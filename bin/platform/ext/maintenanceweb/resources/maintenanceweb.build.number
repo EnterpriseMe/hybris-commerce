@@ -1,0 +1,9 @@
+#Ant properties
+#Fri Jul 07 15:17:25 CEST 2017
+builddate=20170707 1513
+description=maintenanceweb
+name=maintenanceweb
+releasedate=20160923 1341
+vendor=hybris
+version=6.2.0.10
+version.api=6.2.0
