@@ -21,8 +21,7 @@
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
     <context:annotation-config/>
-    <context:component-scan base-package="concerttours"/>
-    <context:property-placeholder properties-ref="hybrisProperties"/>
+     <context:property-placeholder properties-ref="hybrisProperties"/>
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
