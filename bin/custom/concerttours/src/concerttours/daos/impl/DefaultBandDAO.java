@@ -1,34 +1,31 @@
 package concerttours.daos.impl;
-
-import concerttours.daos.BandDAO;
-import concerttours.model.BandModel;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-
+import concerttours.daos.BandDAO;
+import concerttours.model.BandModel;
 
 @Component(value = "bandDAO")
-public class DefaultBandDAO implements BandDAO {
-
-
+public class DefaultBandDAO implements BandDAO
+{
     /**
-     * Implement dao method to find all the bands using flex search
+     * Use Hybris FlexibleSearchService for running queries against the database
      */
-
     @Autowired
     private FlexibleSearchService flexibleSearchService;
-
-
+    /**
+     * Finds all Bands by performing a FlexibleSearch using the {@link FlexibleSearchService}.
+     */
     @Override
-    public List<BandModel> findBands() {
-
-        final String query = "SELECT {p:" +  BandModel.PK +
-                "FROM {" + BandModel._TYPECODE + " AS p}";
-
-        final FlexibleSearchQuery flexibleSearchQuery = new FlexibleSearchQuery(query);
+    public List<BandModel> findBands()
+    {
+        // Build a query for the flexible search.
+        final String queryString = //
+                "SELECT {p:" + BandModel.PK + "} "//
+                        + "FROM {" + BandModel._TYPECODE + " AS p} ";
+        final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
         // Note that we could specify paginating logic by providing a start and count variable (commented out below)
         // This can provide a safeguard against returning very large amounts of data, or hogging the database when there are
         // for example millions of items being returned.
@@ -36,9 +33,8 @@ public class DefaultBandDAO implements BandDAO {
         //query.setStart(start);
         //query.setCount(count);
         // Return the list of BandModels.
-        return flexibleSearchService.<BandModel>search(flexibleSearchQuery).getResult();
+        return flexibleSearchService.<BandModel> search(query).getResult();
     }
-
     /**
      * Finds all Bands by given code by performing a FlexibleSearch using the {@link FlexibleSearchService}.
      */

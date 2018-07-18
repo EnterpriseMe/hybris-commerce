@@ -19,23 +19,33 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-
+    <!-- Scan and initialize all the beans in the package below  -->
     <context:component-scan base-package="concerttours"/>
 
-    <alias name = "defaultBandService" alias = "bandService" />
-    <bean id = "defaultBandService" class = "concerttours.service.impl.DefaultBandService" >
-        <property name = "bandDAO" ref = "bandDAO" />
-    </bean>
-
+    <!-- Core System Setup Beans -->
     <bean id="concerttoursSystemSetup" class="concerttours.setup.ConcerttoursSystemSetup">
         <!-- constructor arg injection example -->
         <constructor-arg ref="concerttoursService"/>
     </bean>
-
     <bean id="ConcerttoursCustomSetup" class="concerttours.setup.ConcerttoursCustomSetup" >
         <property name="importService" ref="importService"/>
     </bean>
 
+    <!-- Facade Beans  -->
+    <alias name = "defaultBandFacade" alias = "bandFacade" />
+    <bean id = "defaultBandFacade" class ="concerttours.facades.impl.DefaultBandFacade" >
+        <property name = "bandService" ref = "bandService" />
+    </bean>
+    <alias name = "defaultTourFacade" alias = "tourFacade" />
+    <bean id = "defaultTourFacade" class ="concerttours.facades.impl.DefaultTourFacade" >
+        <property name = "productService" ref = "productService" />
+    </bean>
+
+    <!--Service Beans -->
+    <alias name = "defaultBandService" alias = "bandService" />
+    <bean id = "defaultBandService" class = "concerttours.service.impl.DefaultBandService" >
+        <property name = "bandDAO" ref = "bandDAO" />
+    </bean>
     <bean id="concerttoursService" class="concerttours.service.impl.DefaultConcerttoursService">
         <!-- setter injection example -->
         <property name="modelService" ref="modelService"/>
