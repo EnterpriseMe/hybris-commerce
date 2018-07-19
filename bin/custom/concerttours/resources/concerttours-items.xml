@@ -51,7 +51,7 @@
 
 	<itemtypes>
         <!-- autocreate="false" since this is already defined in other items xml-->
-        <itemtype generate="true" code="Product" autocreate="false">
+        <itemtype generate="false" code="Product" autocreate="false">
             <attributes>
                 <attribute qualifier="hashtag" type="java.lang.String">
                     <description>hashtag of concert tour for social media</description>
@@ -105,7 +105,24 @@
             </attributes>
         </itemtype>
 
+        <itemtype code="News">
+            <deployment table="News" typecode="30270"/>
+            <attributes>
+                <attribute qualifier="date" type="java.util.Date">
+                    <description>Date of the new item</description>
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="headline" type="java.lang.String">
+                    <description>News Haed Line</description>
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="content" type="java.lang.String">
+                    <description>News Content</description>
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
 
 
-	</itemtypes>
+    </itemtypes>
 </items>
